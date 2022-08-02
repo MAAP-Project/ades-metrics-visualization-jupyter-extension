@@ -7,7 +7,7 @@
     "jupyterlab",
     "jupyterlab-extension"
   ],
-  "homepage": "https://github.com/dylanwilbur/ades-metrics-visualization",
+  "homepage": "https://github.com/MAAP-Project/ades-metrics-visualization-jupyter-extension",
   "bugs": {
     "url": ""
   },
@@ -25,7 +25,7 @@
   "style": "style/index.css",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dylanwilbur/ades-metrics-visualization.git"
+    "url": "https://github.com/MAAP-Project/ades-metrics-visualization-jupyter-extension"
   },
   "scripts": {
     "build": "jlpm run build:lib && jlpm run build:labextension:dev",
