@@ -1,5 +1,5 @@
 {
-  "name": "ades-metrics-visualization",
+  "name": "@maap-jupyterlab/ades-metrics-visualization-jupyter-extension",
   "version": "0.1.0",
   "description": "Visualization interface in Jupyter Lab for ADES",
   "keywords": [
@@ -36,7 +36,7 @@
     "build:prod": "jlpm run clean && jlpm run build:lib && jlpm run build:labextension",
     "clean": "jlpm run clean:lib",
     "clean:all": "jlpm run clean:lib && jlpm run clean:labextension",
-    "clean:labextension": "rimraf ades-metrics-visualization/labextension",
+    "clean:labextension": "rimraf ades_metrics_visualization/labextension",
     "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
     "eslint": "eslint . --ext .ts,.tsx --fix",
     "eslint:check": "eslint . --ext .ts,.tsx",
@@ -70,7 +70,7 @@
   ],
   "jupyterlab": {
     "extension": true,
-    "outputDir": "ades-metrics-visualization/labextension"
+    "outputDir": "ades_metrics_visualization/labextension"
   },
   "styleModule": "style/index.js"
 }
