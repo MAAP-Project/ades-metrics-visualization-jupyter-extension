@@ -1,6 +1,6 @@
 {
   "name": "@maap-jupyterlab/ades-metrics-visualization-jupyter-extension",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Visualization interface in Jupyter Lab for ADES",
   "keywords": [
     "jupyter",
@@ -72,7 +72,7 @@
     "extension": true,
     "outputDir": "ades_metrics_visualization/labextension",
     "_build": {
-      "load": "static/remoteEntry.ed10920a6bfed4560d58.js",
+      "load": "static/remoteEntry.6c1cf06d77d3a17f6227.js",
       "extension": "./extension",
       "style": "./style"
     }
