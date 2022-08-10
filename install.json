@@ -1,5 +1,5 @@
 {
   "packageManager": "python",
-  "packageName": "ades_metrics_visualization",
-  "uninstallInstructions": "Use your Python package manager (pip, conda, etc.) to uninstall the package ades_metrics_visualization"
+  "packageName": "ades_metrics_visualization_jupyter_extension",
+  "uninstallInstructions": "Use your Python package manager (pip, conda, etc.) to uninstall the package ades_metrics_visualization_jupyter_extension"
 }

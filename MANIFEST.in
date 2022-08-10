@@ -1,18 +1,24 @@
 include LICENSE
-include README.md
+include *.md
 include pyproject.toml
-include jupyter-config/ades-metrics-visualization.json
+include conftest.py
 
 include package.json
+include install.json
 include ts*.json
+include *.config.js
+include yarn.lock
 
-graft ades-metrics-visualization/labextension
+graft ades_metrics_visualization_jupyter_extension/labextension
 
 # Javascript files
 graft src
 graft style
+graft schema
+graft ui-tests
 prune **/node_modules
 prune lib
+prune binder
 
 # Patterns to exclude from any directory
 global-exclude *~

@@ -1,10 +1,11 @@
-# ades-metrics-visualization-jupyter-extension
+# ades_metrics_visualization_jupyter_extension
 
+[![Github Actions Status](https://github.com/MAAP-Project/ades-metrics-visualization-jupyter-extension//workflows/Build/badge.svg)](https://github.com/MAAP-Project/ades-metrics-visualization-jupyter-extension//actions/workflows/build.yml)
 Jupyter extension that visualizes ADES metrics.
 
 ## Requirements
 
-* JupyterLab >= 3.0
+- JupyterLab >= 3.0
 
 ## Install
 
@@ -21,44 +22,43 @@ To remove the extension, execute:
 ```bash
 pip uninstall ades_metrics_visualization_jupyter_extension
 ```
+
 ## Contributing
 
 ### Development install
 
 Note: You will need NodeJS to build the extension package.
 
+The `jlpm` command is JupyterLab's pinned version of
+[yarn](https://yarnpkg.com/) that is installed with JupyterLab. You may use
+`yarn` or `npm` in lieu of `jlpm` below.
 
 ```bash
+# Clone the repo to your local environment
+# Change directory to the ades_metrics_visualization_jupyter_extension directory
 # Install package in development mode
 pip install -e .
 # Link your development version of the extension with JupyterLab
 jupyter labextension develop . --overwrite
 # Rebuild extension Typescript source after making changes
-jlpm run build
+jlpm build
 ```
 
-> The `jlpm` command is JupyterLab's pinned version of
-> [yarn](https://yarnpkg.com/) that is installed with JupyterLab. You may use
-> `yarn` or `npm` in lieu of `jlpm` below.
-
-The first command installs the dependencies that are specified in the
-`setup.py` file and in `package.json`. Among the dependencies are also all the `JupyterLab` components that you want to use in your project.
-
-It then runs the build script. In that step, the TypeScript code gets
-converted to javascript using the compiler `tsc` and stored in a `lib`
-directory. And a condensed form of the Javascript is copied in the Python
-package (in the folder `ades_metrics_visualization/labextension`). This is the code that
-would be installed by the user in JupyterLab.
-
-The second command creates a symbolic link to the folder `hello_world/labextension` so that extension is installed in development mode in JupyterLab.
-
-The third command allows you to update the Javascript code each time you modify your
-extension code.
-
-Now, we can run the extension. Note by adding `--watch`, we just have to refresh the browser when the project is rebuilt.
+You can watch the source directory and run JupyterLab at the same time in different terminals to watch for changes in the extension's source and automatically rebuild the extension.
 
 ```bash
-jupyter lab --watch
+# Watch the source directory in one terminal, automatically rebuilding when needed
+jlpm watch
+# Run JupyterLab in another terminal
+jupyter lab
+```
+
+With the watch command running, every saved change will immediately be built locally and available in your running JupyterLab. Refresh JupyterLab to load the change in your browser (you may need to wait several seconds for the extension to be rebuilt).
+
+By default, the `jlpm build` command generates the source maps for this extension to make it easier to debug using the browser dev tools. To also generate source maps for the JupyterLab core extensions, you can run the following command:
+
+```bash
+jupyter lab build --minimize=False
 ```
 
 ### Development uninstall
@@ -71,23 +71,26 @@ In development mode, you will also need to remove the symlink created by `jupyte
 command. To find its location, you can run `jupyter labextension list` to figure out where the `labextensions`
 folder is located. Then you can remove the symlink named `ades-metrics-visualization-jupyter-extension` within that folder.
 
-## File Structure Info
+### Testing the extension
 
-- Information about the extension:
-  - `README.md` contains some instructions
-  - `LICENSE` contains your extension code license; BSD-3 Clause by default (but you can change it).
-- Extension code (those files are mandatory):
-  - `package.json` contains information about the extension such as dependencies
-  - `tsconfig.json` contains information for the typescript compilation
-  - `src/index.ts` _this contains the actual code of your extension_
-  - `style/` folder contains style elements that you can use
-- Validation:
-  - `.prettierrc` and `.prettierignore` specify the code formatter [`prettier`](https://prettier.io) configuration
-  - `.eslintrc.js` and `.eslintignore` specify the code linter [`eslint`](https://eslint.org) configuration
-  - `.github/workflows/build.yml` sets the continuous integration tests of the code using [GitHub Actions](https://help.github.com/en/actions)
-- Packaging as a Python package:
-  - `setup.py` contains information about the Python package such as what to package
-  - `pyproject.toml` contains the dependencies to create the Python package
-  - `MANIFEST.in` contains list of non-Python files to include in the Python package
-  - `install.json` contains information retrieved by JupyterLab to help users know how to manage the package
-  - `ades_metrics_visualization/` folder contains the final code to be distributed
+#### Frontend tests
+
+This extension is using [Jest](https://jestjs.io/) for JavaScript code testing.
+
+To execute them, execute:
+
+```sh
+jlpm
+jlpm test
+```
+
+#### Integration tests
+
+This extension uses [Playwright](https://playwright.dev/docs/intro/) for the integration tests (aka user level tests).
+More precisely, the JupyterLab helper [Galata](https://github.com/jupyterlab/jupyterlab/tree/master/galata) is used to handle testing the extension in JupyterLab.
+
+More information are provided within the [ui-tests](./ui-tests/README.md) README.
+
+### Packaging the extension
+
+See [RELEASE](RELEASE.md)

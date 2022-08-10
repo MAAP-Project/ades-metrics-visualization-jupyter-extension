@@ -1,0 +1,8 @@
+{
+  "jupyter.lab.shortcuts": [],
+  "title": "ades-metrics-visualization-jupyter-extension",
+  "description": "ades-metrics-visualization-jupyter-extension settings.",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}
