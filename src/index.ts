@@ -21,35 +21,27 @@ const plugin: JupyterFrontEndPlugin<void> = {
   requires: [ICommandPalette],
   optional: [ISettingRegistry],
   activate: (app: JupyterFrontEnd, palette: ICommandPalette, settingRegistry: ISettingRegistry | null) => {
-    console.log('JupyterLab extension ades-metrics-visualization is activated!');
-
-    const content = new Widget();
-    content.addClass('ades-widget');
-    const widget = new MainAreaWidget({ content });
-
-    let div = document.createElement('div');
-    div.classList.add('iframe-widget');
-    let iframe = document.createElement('iframe');
-    iframe.id = 'iframeid';
-    iframe.src = LOCAL_KIBANA_URL;
-    div.appendChild(iframe);
-    content.node.appendChild(div);
-
-
-    widget.id = 'jupyter-ades';
-    widget.title.label = 'ADES Metrics';
-    widget.title.closable = true;
-
     const { commands } = app;
     const command: string = 'ades:open';
     commands.addCommand(command, {
       label: 'ADES Metrics Visualization',
       execute: () => {
-        if (!widget.isAttached) {
-          // Attach the widget to the main work area if it's not there
-          app.shell.add(widget, 'main');
-        }
-        // Activate the widget
+        const content = new Widget();
+        const widget = new MainAreaWidget({ content });
+
+        let div = document.createElement('div');
+        div.classList.add('iframe-widget');
+        let iframe = document.createElement('iframe');
+        iframe.id = 'iframeid';
+        iframe.src = LOCAL_KIBANA_URL;
+        div.appendChild(iframe);
+        content.node.appendChild(div);
+
+        widget.id = 'jupyter-ades';
+        widget.title.label = 'ADES Metrics';
+        widget.title.closable = true;
+
+        app.shell.add(widget, 'main');
         app.shell.activateById(widget.id);
       },
     });
@@ -66,6 +58,8 @@ const plugin: JupyterFrontEndPlugin<void> = {
     }
 
     palette.addItem({ command, category: 'Tutorial' });
+
+    console.log('JupyterLab extension ades-metrics-visualization is activated!');
   }
 };
 

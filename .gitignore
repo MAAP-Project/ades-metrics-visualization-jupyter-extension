@@ -4,3 +4,7 @@ node_modules/
 *.egg-info/
 .ipynb_checkpoints
 *.tsbuildinfo
+
+package-lock.json
+ades_metrics_visualization_jupyter_extension/labextension
+ades_metrics_visualization_jupyter_extension/__pycache__

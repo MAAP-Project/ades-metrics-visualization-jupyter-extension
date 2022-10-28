@@ -1,6 +1,6 @@
 {
   "name": "@maap-jupyterlab/ades-metrics-visualization-jupyter-extension",
-  "version": "0.3.0",
+  "version": "0.3.3",
   "description": "Jupyter extension that visualizes ADES metrics.",
   "keywords": [
     "jupyter",
