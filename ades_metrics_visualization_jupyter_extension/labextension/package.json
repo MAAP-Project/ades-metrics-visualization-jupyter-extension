@@ -1,6 +1,6 @@
 {
   "name": "@maap-jupyterlab/ades-metrics-visualization-jupyter-extension",
-  "version": "0.1.0",
+  "version": "0.3.4",
   "description": "Jupyter extension that visualizes ADES metrics.",
   "keywords": [
     "jupyter",
@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/MAAP-Project/ades-metrics-visualization-jupyter-extension/issues"
   },
-  "license": "BSD-3-Clause",
+  "license": "Apache 2.0",
   "author": {
     "name": "Dylan Wilbur",
     "email": "dylanwilbur@g.ucla.edu"
@@ -95,7 +95,7 @@
     "outputDir": "ades_metrics_visualization_jupyter_extension/labextension",
     "schemaDir": "schema",
     "_build": {
-      "load": "static/remoteEntry.b4935773ba1c34674fc4.js",
+      "load": "static/remoteEntry.77fa518ac6772baf1e20.js",
       "extension": "./extension",
       "style": "./style"
     }

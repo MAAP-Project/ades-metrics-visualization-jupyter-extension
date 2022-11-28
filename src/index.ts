@@ -8,9 +8,8 @@ import { ISettingRegistry } from '@jupyterlab/settingregistry';
 import { ICommandPalette, MainAreaWidget } from '@jupyterlab/apputils';
 
 import { Widget } from '@lumino/widgets';
+import { getKibanaURL } from './utils';
 
-
-import { LOCAL_KIBANA_URL } from './constants';
 
 /**
  * Initialization data for the ades-metrics-visualization extension.
@@ -29,20 +28,30 @@ const plugin: JupyterFrontEndPlugin<void> = {
         const content = new Widget();
         const widget = new MainAreaWidget({ content });
 
-        let div = document.createElement('div');
-        div.classList.add('iframe-widget');
-        let iframe = document.createElement('iframe');
-        iframe.id = 'iframeid';
-        iframe.src = LOCAL_KIBANA_URL;
-        div.appendChild(iframe);
-        content.node.appendChild(div);
+        let kibanaUrl = ""
 
-        widget.id = 'jupyter-ades';
-        widget.title.label = 'ADES Metrics';
-        widget.title.closable = true;
+        let res = getKibanaURL()
+        res.then((data) => {
+          kibanaUrl = data["KIBANA_URL"]
 
-        app.shell.add(widget, 'main');
-        app.shell.activateById(widget.id);
+          let div = document.createElement('div');
+          div.classList.add('iframe-widget');
+          let iframe = document.createElement('iframe');
+          iframe.id = 'iframeid';
+          iframe.src = kibanaUrl;
+          div.appendChild(iframe);
+          content.node.appendChild(div);
+
+          widget.id = 'jupyter-ades';
+          widget.title.label = 'ADES Metrics';
+          widget.title.closable = true;
+
+          app.shell.add(widget, 'main');
+          app.shell.activateById(widget.id);
+
+        })
+
+
       },
     });
 
